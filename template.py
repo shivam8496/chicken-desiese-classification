@@ -18,7 +18,7 @@ list_of_file=[
     f"src/{projectName}/config/__init__.py",
     f"src/{projectName}/config/configurations.py",
     f"src/{projectName}/pipeline/__init__.py",
-    f"src/{projectName}/intity/__init__.py",
+    f"src/{projectName}/entity/__init__.py",
     "requirements.py",
     "setup.py",
     "config/config.yaml",
@@ -29,11 +29,13 @@ list_of_file=[
 
 for filePath in list_of_file:
     filePath = Path(filePath)
-    folder , file =os.split(filePath)
-    
-    if not os.path.exists(folder):
-        os.mkdir(folder,exist_ok=True)
-        print(f"folder {folder} created succfully")
-    if (not os.path.exists(filePath)) or (os.path.getsize(filePath)==0):
-        with open(filePath,"w") as x: pass
-        logging.info(f"folder {folder} and file {file} created succfully")
+    folder , file =os.path.split(filePath)
+    if(folder!=""):
+        if not os.path.exists(folder):
+            os.makedirs(folder,exist_ok=True)
+            print(f"folder {folder} created succfully")
+    if(file!=""):
+        if (not os.path.exists(filePath)) or (os.path.getsize(filePath)==0):
+            with open(filePath,"w") as x: pass
+            logging.info(f"folder {folder} and file {file} created successfully")
+    else: logging.info(f"folder {folder} and file {file} already exists")   
