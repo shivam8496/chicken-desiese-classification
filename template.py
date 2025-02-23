@@ -19,12 +19,14 @@ list_of_file=[
     f"src/{projectName}/config/configurations.py",
     f"src/{projectName}/pipeline/__init__.py",
     f"src/{projectName}/entity/__init__.py",
-    "requirements.py",
+    "requirements.txt",
     "setup.py",
     "config/config.yaml",
     "params.yaml",
     "dvc.yaml",
-    "research/trails.ipynb"
+    "research/trails.ipynb",
+    "templates/index.html",
+    "app.py"
 ]
 
 for filePath in list_of_file:
@@ -38,4 +40,4 @@ for filePath in list_of_file:
         if (not os.path.exists(filePath)) or (os.path.getsize(filePath)==0):
             with open(filePath,"w") as x: pass
             logging.info(f"folder {folder} and file {file} created successfully")
-    else: logging.info(f"folder {folder} and file {file} already exists")   
+        else: logging.info(f"folder {folder} and file {file} already exists")   
